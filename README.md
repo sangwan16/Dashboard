@@ -2,6 +2,8 @@
 
 A production-ready admin dashboard for managing dental patient records, built with React, TypeScript, MUI, and Firebase.
 
+🔗 **Live Demo:** [https://plaquego.web.app](https://plaquego.web.app)
+
 ![Dashboard Preview](src/assets/The%20Dashboard.png)
 
 ## Features
