@@ -1,33 +1,70 @@
-# React + TypeScript + Vite
+# PlaqueGo — Patient Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-ready admin dashboard for managing dental patient records, built with React, TypeScript, MUI, and Firebase.
 
-Currently, two official plugins are available:
+![Dashboard Preview](src/assets/The%20Dashboard.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Patients Table** — paginated data grid with avatar initials and summary stat cards
+- **Dental History** — fillings, extractions, root canals, removable dentures per patient
+- **Medical History** — thyroid, diabetes, hypertension conditions per patient
+- **Red Flag Habits** — smoking, vaping, chew tobacco, alcohol tracking
+- **Progress Data** — weekly oral hygiene scores with grade, brushing, flossing, and mouthwash logs
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All modals open with a slide-up animation, blurred backdrop, and a gradient accent strip colour-coded by category.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Layer | Technology |
+|---|---|
+| UI | React 19 + TypeScript |
+| Component Library | MUI v7 (Material UI) |
+| Data Grid | MUI X Data Grid v8 |
+| Backend / Database | Firebase Firestore |
+| Hosting | Firebase Hosting |
+| Build Tool | Vite 8 |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Firestore Data Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
+```
+users/{uid}/profile/userInfo
+users/{uid}/profile/dentalHistory
+users/{uid}/profile/medicalHistory
+users/{uid}/profile/redFlagHabits
+users/{uid}/progressData/{year_month_week_day}
+```
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Add your Firebase credentials
+cp .env.example .env
+# Fill in VITE_FIREBASE_* values
+
+# Run dev server
+npm run dev
+
+# Production build
+npm run build
+
+# Deploy to Firebase Hosting
+firebase deploy --only hosting
+```
+
+## Environment Variables
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
       tseslint.configs.stylisticTypeChecked,
 
       // Other configs...
